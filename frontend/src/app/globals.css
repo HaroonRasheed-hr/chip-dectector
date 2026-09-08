@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Theme CSS variables ─────────────────────────────── */
+:root {
+  --gradient-brand: linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%);
+
+  /* Dark mode defaults */
+  --theme-bg: linear-gradient(180deg, #212121 0%, #000000 100%);
+  --theme-navbar-bg: rgba(0, 0, 0, 1);
+  --theme-navbar-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  --theme-text: rgba(255, 255, 255, 1);
+  --theme-text-dim: rgba(220, 220, 220, 1);
+  --theme-card-bg: rgba(255, 255, 255, 0.15);
+  --theme-card-border: rgba(255, 255, 255, 0.28);
+  --theme-model-btn-bg: rgba(255, 255, 255, 0.05);
+  --theme-model-btn-border: rgba(255, 255, 255, 0.10);
+  --theme-icon: rgba(255, 255, 255, 0.6);
+  --theme-scroll-track: #0d1117;
+  --theme-scroll-thumb: #2d3748;
+  --theme-scroll-thumb-hover: #4a5568;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.08);
+  --theme-toggle-border: rgba(255, 255, 255, 0.18);
+  --theme-toggle-color: rgba(255, 255, 255, 1);
+}
+
+html.light {
+  --theme-bg: rgba(255, 255, 255, 1);
+  --theme-navbar-bg: rgba(255, 255, 255, 1);
+  --theme-navbar-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  --theme-text: rgba(33, 33, 33, 1);
+  --theme-text-dim: rgba(80, 80, 80, 1);
+  --theme-card-bg: rgba(33, 33, 33, 0.05);
+  --theme-card-border: rgba(33, 33, 33, 0.18);
+  --theme-model-btn-bg: rgba(33, 33, 33, 0.04);
+  --theme-model-btn-border: rgba(33, 33, 33, 0.14);
+  --theme-icon: rgba(33, 33, 33, 0.5);
+  --theme-scroll-track: #f0f0f0;
+  --theme-scroll-thumb: #c0c0c0;
+  --theme-scroll-thumb-hover: #999999;
+  --theme-toggle-bg: rgba(255, 255, 255, 1);
+  --theme-toggle-border: rgba(33, 33, 33, 0.15);
+  --theme-toggle-color: rgba(33, 33, 33, 1);
+}
+
+/* ─── Reset ───────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* ─── Base ────────────────────────────────────────────── */
+html,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  font-family: "Poppins", sans-serif;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* ─── Theme-aware transitions on structural elements ──── */
+header,
+nav,
+main,
+section,
+aside,
+footer,
+div,
+article {
+  transition: background-color 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+a,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  transition: color 0.35s ease;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-scroll-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-scroll-thumb);
+  border-radius: 3px;
+  transition: background 0.35s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-scroll-thumb-hover);
+}
+
+/* ─── Brand gradient utility ──────────────────────────── */
+.btn-gradient {
+  background: linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%);
+}
+.btn-gradient:hover {
+  background: linear-gradient(180deg, #3db8d8 0%, #2f4b8c 100%);
+}
+
+/* ─── Example image selected ring ────────────────────── */
+.example-selected {
+  border: 2px solid #57C8E7;
+}
