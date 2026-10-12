@@ -1,196 +1,59 @@
-# VisionPulse
+# Chip Detector
 
-VisionPulse is a full-stack computer-vision monitoring application. A Next.js
-UI and a Django REST API ship as a single deployable unit: the frontend is
-statically exported and served by Django, so the whole app runs from one
-process on one port.
+Chip Detector is a web application for analyzing images with object detection.
+Upload an image or choose an example to view the resulting image with detected
+instances marked. The project includes a Next.js interface and a Django
+backend that provides the detection API.
 
-The backend runs object-detection inference behind a pluggable provider
-bridge, computes area/threshold metrics from the results, collects host
-telemetry (CPU, memory, disk, GPU, uptime), and publishes both streams onto
-an MQTT bus for downstream dashboards and alerting.
+## Purpose
 
----
-
-## Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Project structure](#project-structure)
-- [Requirements](#requirements)
-- [Quick start](#quick-start)
-- [Configuration](#configuration)
-- [Running](#running)
-- [API](#api)
-- [Tests](#tests)
-- [Documentation](#documentation)
-
----
-
-## Features
-
-- **Single-port full stack** — Next.js static export served by Django via
-  WhiteNoise; `/` is the UI, `/api/` is the JSON API.
-- **JWT authentication** — register / login / refresh / logout with a
-  refresh-token cookie (`djangorestframework-simplejwt`).
-- **Pluggable inference bridge** — providers (RF-DETR, TensorRT, and a
-  future-provider stub) sit behind a common `AIProvider` interface with a
-  router, so the model backend can be swapped without touching the API.
-- **Detection post-processing** — mask generation, area calculation, and
-  threshold evaluation over inference output, with persistence of results.
-- **System monitoring** — CPU, memory, disk, GPU, and uptime collectors
-  aggregated by a telemetry service and exposed over REST.
-- **MQTT integration** — inference results, telemetry, and alerts published
-  at QoS 1 with an in-process offline queue that replays on reconnect;
-  inbound command topics are handled by subscribers.
-- **Calibration app** — calibration services and endpoints for tuning
-  detection parameters.
-
-## Architecture
-
-```
-Browser
-   │
-   ▼
-Django (:8000)
-   ├── /                → Next.js static export (frontend/out/)
-   ├── /api/auth/       → apps.users
-   ├── /api/inference/  → apps.inference ──► bridge ──► AI provider
-   ├── /api/monitoring/ → apps.monitoring ─► telemetry collectors
-   └── /admin/          → Django admin
-                │
-                ▼
-          MQTT broker (Mosquitto)  ──► dashboards / alerting
-```
-
-URL routing is ordered so the frontend catch-all never swallows the
-reserved `api/`, `admin/`, `static/`, and `media/` prefixes.
-
-## Project structure
-
-```
-run.py                  Single entry point: build frontend + serve backend
-backend/
-  config/               Django settings (base / development / production), urls, wsgi
-  core/views/frontend/  Views that serve the Next.js export
-  scripts/              build_frontend.py
-  apps/
-    users/              Auth: register, login, logout, token refresh, me
-    inference/          Inference API, bridge (DTOs, interfaces, providers), services
-    monitoring/         CPU / memory / disk / GPU / uptime collectors + telemetry
-    mqtt_manager/       MQTT client, publishers, subscribers
-    calibration/        Calibration services and endpoints
-    websocket/          Realtime channel support
-frontend/
-  src/app/              Routes: /, /login, /register, /detection
-Docs/                   Setup, build, backend, frontend, and MQTT documentation
-```
+The purpose of Chip Detector is to support visual inspection of chip images by
+making image-based detection results easy to run and review. The backend also
+provides user accounts, detection calibration, system monitoring, and optional
+MQTT messaging.
 
 ## Requirements
 
-| Tool | Version |
-|------|---------|
-| Python | 3.10+ |
-| Node.js | 18.x or 20.x LTS |
-| npm | 9+ |
+- Python 3.10 or later
+- Node.js and npm
 
-Optional: a Mosquitto broker for the MQTT features.
+The project uses SQLite by default. An MQTT broker is only needed if you want
+to use the MQTT features.
 
-## Quick start
+## Run the project on Windows
+
+Open PowerShell in the project folder and run:
 
 ```powershell
-git clone https://github.com/Haroon-Xray/VisionPulse.git
-cd VisionPulse
+python -m venv backend\venv
+.\backend\venv\Scripts\Activate.ps1
+python -m pip install -r backend\requirements.txt
+Copy-Item backend\.env.example backend\.env
+```
 
-# Backend
-python -m venv backend/venv
-backend\venv\Scripts\Activate.ps1
-pip install -r backend/requirements.txt
-copy backend\.env.example backend\.env      # then edit SECRET_KEY
+Open `backend\.env` and replace the sample `SECRET_KEY` value with a private
+key. Keep the real `.env` file private.
 
-# Frontend dependencies
-cd frontend; npm install; cd ..
+Start the application from the project folder:
 
-# Build the frontend and serve everything on http://127.0.0.1:8000/
+```powershell
 python run.py
 ```
 
-On macOS/Linux, use `source backend/venv/bin/activate` and `cp` instead.
+The first run builds the frontend. The launcher then applies database
+migrations, collects static files, and starts the Django server. Open
+http://127.0.0.1:8000/ in a browser to use the application.
 
-## Configuration
-
-Copy `backend/.env.example` to `backend/.env` and fill it in. Never commit
-the real `.env`.
-
-| Variable | Purpose |
-|----------|---------|
-| `SECRET_KEY` | Django secret key — change it |
-| `DEBUG` | `True` for development |
-| `ALLOWED_HOSTS` | Comma-separated hostnames |
-| `DATABASE_URL` | Defaults to SQLite; set a `postgres://…` URL to switch |
-| `CORS_ALLOWED_ORIGINS` | Comma-separated allowed origins |
-| `CSRF_TRUSTED_ORIGINS` | Comma-separated trusted origins |
-| `JWT_ACCESS_TOKEN_LIFETIME_MINUTES` | Access-token lifetime (default 15) |
-| `JWT_REFRESH_TOKEN_LIFETIME_DAYS` | Refresh-token lifetime (default 7) |
-| `REFRESH_COOKIE_SECURE` | `True` in production (requires HTTPS) |
-
-PostgreSQL also needs `psycopg2-binary` uncommented in
-`backend/requirements.txt`.
-
-## Running
-
-`run.py` builds the frontend, applies migrations, collects static files,
-and starts the server.
+To run without rebuilding the frontend after it has already been built:
 
 ```powershell
-python run.py                    # build + serve on 127.0.0.1:8000
-python run.py --no-build         # reuse the existing frontend/out/
-python run.py --port 9000        # different port
-python run.py --host 0.0.0.0     # bind all interfaces
-python run.py --no-migrate       # skip migrate
-python run.py --no-collectstatic # skip collectstatic
-python run.py --prod             # production settings via gunicorn
+python run.py --no-build
 ```
 
-`--prod` requires `gunicorn` installed and an HTTPS-terminating reverse
-proxy, since production settings enforce SSL redirects. For a local
-prod-like check over plain HTTP, omit the flag — the default already
-serves the production frontend build.
+## Main pages and API
 
-For frontend iteration, run the two sides separately: `npm run dev` in
-`frontend/` and `python manage.py runserver` in `backend/`. See
-[Docs/setup-guide.md](Docs/setup-guide.md).
-
-## API
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register/` | Create an account |
-| POST | `/api/auth/login/` | Obtain access token + refresh cookie |
-| POST | `/api/auth/logout/` | Invalidate the refresh token |
-| POST | `/api/auth/token/refresh/` | Exchange the refresh cookie for a new access token |
-| GET | `/api/auth/me/` | Current user |
-| POST | `/api/inference/infer/` | Run inference on an image |
-| GET | `/api/monitoring/metrics/` | Host telemetry snapshot |
-
-Frontend routes: `/`, `/login/`, `/register/`, `/detection/`.
-
-## Tests
-
-```powershell
-# Backend
-cd backend; python manage.py test
-
-# Frontend
-cd frontend; npm test          # npm run test:coverage for coverage
-```
-
-## Documentation
-
-| Document | Covers |
-|----------|--------|
-| [Docs/setup-guide.md](Docs/setup-guide.md) | Cloning, configuring, and running from scratch |
-| [Docs/Build-doc.md](Docs/Build-doc.md) | How the frontend is built and served by Django |
-| [Docs/backend-doc.md](Docs/backend-doc.md) | Backend apps, services, and structure |
-| [Docs/frontend-doc.md](Docs/frontend-doc.md) | Frontend structure and conventions |
-| [Docs/MQTT-Integration.md](Docs/MQTT-Integration.md) | Topics, publishers, subscribers, reconnect, logging |
+- `/` - application home
+- `/login/` and `/register/` - user account pages
+- `/detection/` - upload an image and review detection results
+- `/api/inference/infer/` - image detection endpoint
+- `/api/monitoring/metrics/` - system monitoring data
