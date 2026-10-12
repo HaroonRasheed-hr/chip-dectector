@@ -40,7 +40,7 @@ export default function ExampleImages({ selectedId, onSelect }: ExampleImagesPro
             aria-label={example.alt}
             className={[
               "relative overflow-hidden shrink-0 transition-all duration-200 hover:opacity-90",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57C8E7]",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#079FF2]",
               selectedId === example.id ? "example-selected" : "border-2 border-transparent",
             ].join(" ")}
             /* Figma: 108×108, border-radius 20px */

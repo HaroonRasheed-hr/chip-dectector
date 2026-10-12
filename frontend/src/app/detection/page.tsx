@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import DetectionClient from "./DetectionClient";
 
 export const metadata: Metadata = {
-  title: "DETR Object Detection – xis.ai",
+  title: "Chip Detection – Chip Detector",
   description: "Run AI-powered DETR object detection on your images",
 };
 

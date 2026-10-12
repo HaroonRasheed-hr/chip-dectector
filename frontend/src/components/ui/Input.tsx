@@ -33,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               "w-full rounded-lg border border-[#2d3a52] bg-white",
               "px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400",
               "outline-none transition-all duration-200",
-              "focus:border-[#4dd4f0] focus:ring-1 focus:ring-[#4dd4f0]",
+              "focus:border-[#079FF2] focus:ring-1 focus:ring-[#079FF2]",
               isPassword ? "pr-11" : "",
               error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "",
               className,

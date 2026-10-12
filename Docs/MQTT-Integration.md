@@ -1,4 +1,4 @@
-# VisionPulse — MQTT Integration
+# Chip Detector — MQTT Integration
 
 How the backend talks to a Mosquitto broker: what it publishes, what it
 subscribes to, how reconnection / queuing / logging works, and how to
@@ -26,7 +26,7 @@ test it end-to-end.
 
 ## 1. Why MQTT
 
-VisionPulse is split between a real-time inference / monitoring loop and
+Chip Detector is split between a real-time inference / monitoring loop and
 downstream consumers (dashboards, fleet management, alerting). MQTT
 gives us:
 
@@ -559,7 +559,7 @@ development that's fine. For production, configure
 
 ## 11. Testing — sub / pub from the CLI
 
-### Watch everything VisionPulse publishes
+### Watch everything Chip Detector publishes
 
 ```powershell
 cd "C:\Program Files\mosquitto"

@@ -163,7 +163,7 @@ export default function DetectionClient() {
               paddingLeft: "200px",
               gap: "10px",
               opacity: 1,
-              background: "linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%)",
+              background: "var(--gradient-brand)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

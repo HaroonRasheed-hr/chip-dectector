@@ -1,4 +1,4 @@
-# VisionPulse — Backend Documentation
+# Chip Detector — Backend Documentation
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@
 
 ## Overview
 
-VisionPulse's backend is a **Django + Django REST Framework** service that exposes the inference and monitoring APIs consumed by the Next.js frontend. It is built to the Part A specification: GPU-accelerated inference orchestrated through a **Bridge Architecture**, with a **Mosquitto MQTT** event bus, **fault-tolerant JSONL persistence**, **psutil/pynvml telemetry**, a **General Error Node System**, and a four-file structured logger.
+Chip Detector's backend is a **Django + Django REST Framework** service that exposes the inference and monitoring APIs consumed by the Next.js frontend. It is built to the Part A specification: GPU-accelerated inference orchestrated through a **Bridge Architecture**, with a **Mosquitto MQTT** event bus, **fault-tolerant JSONL persistence**, **psutil/pynvml telemetry**, a **General Error Node System**, and a four-file structured logger.
 
 The backend is deliberately structured so the AI team can drop their RF-DETR / TensorRT engine into the bridge without anyone touching the views, the frontend, or the API contract.
 

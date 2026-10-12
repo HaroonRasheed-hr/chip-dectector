@@ -24,7 +24,7 @@ export default function LoginScaleWrapper({ children }: { children: React.ReactN
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #212121 0%, #000000 100%)",
+        background: "linear-gradient(180deg, #0D2033 0%, #06111D 100%)",
       }}
     >
       <div

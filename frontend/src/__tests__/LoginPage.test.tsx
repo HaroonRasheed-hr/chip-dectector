@@ -21,9 +21,9 @@ describe("LoginPage", () => {
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 
-  it("renders xis.ai branding", () => {
+  it("renders Chip Detector branding", () => {
     render(<LoginPage />);
-    expect(screen.getByAltText(/xis\.ai logo/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/chip detector logo/i)).toBeInTheDocument();
   });
 
   it("renders the Login heading", () => {

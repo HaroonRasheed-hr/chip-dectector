@@ -33,12 +33,12 @@ export default function Navbar() {
       role="banner"
     >
       <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between">
-        <Link href="/detection" className="flex items-center" aria-label="xis.ai home">
+        <Link href="/detection" className="flex items-center" aria-label="Chip Detector home">
           <Image
-            src={theme === "light" ? "/images/xis-logo-light.png" : "/images/xis-logo.png"}
-            alt="XIS.AI"
-            width={120}
-            height={40}
+            src="/images/chip-detector-logo.svg"
+            alt="Chip Detector logo"
+            width={56}
+            height={45}
             priority
             style={{ objectFit: "contain" }}
           />

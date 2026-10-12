@@ -3,8 +3,8 @@ import Image from "next/image";
 import LoginForm from "@/components/login/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Login – xis.ai",
-  description: "Sign in to your xis.ai account",
+  title: "Login – Chip Detector",
+  description: "Sign in to your Chip Detector account",
 };
 
 export default function LoginPage() {
@@ -15,7 +15,7 @@ export default function LoginPage() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #212121 0%, #000000 100%)",
+        background: "linear-gradient(180deg, #0D2033 0%, #06111D 100%)",
       }}
     >
       {/* ── Left panel: branding + illustration ── */}
@@ -29,11 +29,11 @@ export default function LoginPage() {
           overflow: "hidden",
         }}
       >
-        {/* XIS logo */}
-        <div style={{ width: "128px", height: "47px", position: "relative", flexShrink: 0 }}>
+        {/* Chip Detector logo */}
+        <div style={{ width: "64px", height: "52px", position: "relative", flexShrink: 0 }}>
           <Image
-            src="/images/xis-logo.png"
-            alt="xis.ai logo"
+            src="/images/chip-detector-logo.svg"
+            alt="Chip Detector logo"
             fill
             style={{ objectFit: "contain", objectPosition: "left center" }}
             priority
