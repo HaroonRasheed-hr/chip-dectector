@@ -163,7 +163,7 @@ export default function LoginForm() {
           <Link
             href="/forgot-password"
             prefetch={false}
-            className="text-xs text-gray-300 hover:text-[#57C8E7] transition-colors duration-150"
+            className="text-xs text-gray-300 hover:text-[#079FF2] transition-colors duration-150"
             style={{ fontFamily: "Poppins" }}
           >
             Forgot Password?
@@ -197,7 +197,7 @@ export default function LoginForm() {
           width: "100%",
           height: "50px",
           borderRadius: "10px",
-          background: "rgba(87, 200, 231, 1)",
+          background: "#079FF2",
           fontFamily: "Poppins",
           fontWeight: 600,
           fontSize: "16px",
@@ -216,7 +216,7 @@ export default function LoginForm() {
         Don&apos;t have an account yet?{" "}
         <Link
           href="/register"
-          className="font-semibold text-white hover:text-[#57C8E7] transition-colors duration-150"
+          className="font-semibold text-white hover:text-[#079FF2] transition-colors duration-150"
         >
           Register for free
         </Link>

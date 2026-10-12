@@ -11,9 +11,9 @@ describe("Navbar", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
 
-  it("renders the xis.ai logo link", () => {
+  it("renders the Chip Detector logo link", () => {
     render(<Navbar />);
-    expect(screen.getByRole("link", { name: /xis\.ai home/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /chip detector home/i })).toBeInTheDocument();
   });
 
   it("renders App navigation link", () => {

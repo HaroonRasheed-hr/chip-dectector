@@ -3,8 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
-  title: "xis.ai – VisionPulse",
-  description: "Precision Beyond Perception – AI-powered object detection",
+  title: "Chip Detector",
+  description: "AI-powered chip defect detection",
 };
 
 export default function RootLayout({

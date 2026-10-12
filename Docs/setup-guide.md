@@ -1,6 +1,6 @@
-# VisionPulse — Full-Stack Setup & Run Guide
+# Chip Detector — Full-Stack Setup & Run Guide
 
-Complete guide for cloning, configuring, and running the VisionPulse full-stack
+Complete guide for cloning, configuring, and running the Chip Detector full-stack
 application (Next.js frontend + Django backend) from scratch.
 
 ---
@@ -53,8 +53,8 @@ git --version
 ## 2. Clone the Repository
 
 ```powershell
-git clone https://github.com/Haroon-Xray/VisionPulse.git
-cd VisionPulse
+git clone https://github.com/HaroonRasheed-hr/chip-dectector.git
+cd chip-dectector
 ```
 
 To pull the latest changes after an initial clone:
@@ -75,7 +75,7 @@ git pull origin feature/backend-development
 ## 3. Project Structure
 
 ```
-VisionPulse/
+chip-dectector/
 ├── backend/                  # Django REST API
 │   ├── apps/
 │   │   ├── users/            # Authentication (JWT)
@@ -127,14 +127,14 @@ Using a virtual environment keeps project dependencies isolated.
 
 **Windows (PowerShell):**
 ```powershell
-cd VisionPulse
+cd chip-dectector
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
 **macOS / Linux (bash):**
 ```bash
-cd VisionPulse
+cd chip-dectector
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -489,7 +489,7 @@ server {
 ## Quick-Start Checklist
 
 ```
-[ ] Git clone: git clone https://github.com/Haroon-Xray/VisionPulse.git
+[ ] Git clone: git clone https://github.com/HaroonRasheed-hr/chip-dectector.git
 [ ] Create venv: python -m venv venv && .\venv\Scripts\Activate.ps1
 [ ] Install Python deps: pip install -r backend/requirements.txt
 [ ] Install Node deps: npm --prefix frontend ci

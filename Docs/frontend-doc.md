@@ -1,4 +1,4 @@
-# VisionPulse — Frontend Documentation
+# Chip Detector — Frontend Documentation
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 
 ## Overview
 
-VisionPulse is an AI-powered object detection web application built by XIS.AI. The frontend allows users to upload or select example images, choose a detection model, run inference, and view the predicted output. The UI supports **dark mode** (default) and **light mode**, switchable via a persistent toggle in the navbar. The selected theme is saved to `localStorage` and restored on every page load without any flash.
+Chip Detector is an AI-powered object detection web application. The frontend allows users to upload or select example images, choose a detection model, run inference, and view the predicted output. The UI supports **dark mode** (default) and **light mode**, switchable via a persistent toggle in the navbar. The selected theme is saved to `localStorage` and restored on every page load without any flash.
 
 ---
 
@@ -46,8 +46,7 @@ VisionPulse is an AI-powered object detection web application built by XIS.AI. T
 frontend/
 ├── public/
 │   └── images/                   # Static assets (logos, examples, thumbnail)
-│       ├── xis-logo.png          # Logo for dark mode (white/light version)
-│       ├── xis-logo-light.png    # Logo for light mode (dark version) ← required asset
+│       ├── chip-detector-logo.svg # Chip Detector logo mark
 │       ├── login-illustration.png
 │       ├── video-thumnail.png
 │       └── example-1.png … example-4.png
@@ -171,7 +170,7 @@ Routing is handled entirely by the Next.js file-system App Router. No third-part
 
 A two-column full-viewport layout:
 
-- **Left panel** — XIS.AI logo, "Precision Beyond Perception" tagline, and a decorative illustration (`login-illustration.png`).
+- **Left panel** — Chip Detector logo, "Precision Beyond Perception" tagline, and a decorative illustration (`login-illustration.png`).
 - **Right panel** — A glassmorphism card containing `LoginForm` (`backdrop-filter: blur(18px)`, `rgba(255,255,255,0.12)` background).
 
 `LoginForm` performs client-side validation (email regex, minimum 6-char password) before simulating an API call and routing to `/detection`.
@@ -194,7 +193,7 @@ The main workspace, divided into three vertical sections inside a 1164px centred
 
 - Height: 100px. Background and shadow respond to the active theme via `var(--theme-navbar-bg)` and `var(--theme-navbar-shadow)`.
 - Max-width 1440px centred, `justify-between` for logo ↔ nav links.
-- **Logo** — conditionally renders `xis-logo.png` (dark mode) or `xis-logo-light.png` (light mode) so the branded "x" mark stays visually identical in both themes. No CSS filter is applied.
+- **Logo** — renders the same transparent Chip Detector SVG logo in both themes.
 - **Theme toggle button** — positioned between the Files link and Community button. Shows 🌙 in dark mode, ☀️ in light mode. In light mode the button itself turns `rgba(255,255,255,1)` (white) with a dark border; in dark mode it uses a translucent white background. Clicking calls `toggle()` from `useTheme`.
 - Nav link text and icons inherit `color: var(--theme-text)` so they adapt automatically.
 
@@ -211,7 +210,7 @@ Handles input and output image zones via a single `variant` prop.
 
 ### `ModelSelector`
 
-Three models as ARIA radio buttons (`role="radio"`, `aria-checked`). Selected state: cyan border `#57C8E7` + cyan tint background — unchanged across themes. Unselected state uses `var(--theme-model-btn-bg)`, `var(--theme-model-btn-border)`, and `var(--theme-text)`.
+Three models as ARIA radio buttons (`role="radio"`, `aria-checked`). Selected state: logo-blue border `#079FF2` + blue tint background — unchanged across themes. Unselected state uses `var(--theme-model-btn-bg)`, `var(--theme-model-btn-border)`, and `var(--theme-text)`.
 
 ### `HowToUse`
 
@@ -239,7 +238,7 @@ Facebook share, Twitter share, and copy-link actions. Clipboard API with 2-secon
 
 ### Overview
 
-VisionPulse supports **dark mode** (default) and **light mode**. The active theme is:
+Chip Detector supports **dark mode** (default) and **light mode**, styled with the logo's bright and deep blues. The active theme is:
 
 1. Stored in `localStorage` under the key `"theme"` (`"dark"` or `"light"`).
 2. Reflected as the CSS class `light` on `<html>` (present in light mode, absent in dark mode).
@@ -274,15 +273,15 @@ All themed values are CSS custom properties in `globals.css`. Dark mode defaults
 
 | Variable | Dark | Light | Used by |
 |---|---|---|---|
-| `--theme-bg` | `linear-gradient(#212121 → #000)` | `rgba(255,255,255,1)` | `body` background |
-| `--theme-navbar-bg` | `rgba(0,0,0,1)` | `rgba(255,255,255,1)` | `Navbar` header |
-| `--theme-navbar-shadow` | `0px 4px 25px rgba(0,0,0,0.25)` | `0px 4px 25px rgba(0,0,0,0.08)` | `Navbar` header |
+| `--theme-bg` | `linear-gradient(#0D2033 → #06111D)` | `#F4FAFF` | `body` background |
+| `--theme-navbar-bg` | `rgba(5,18,32,1)` | `rgba(255,255,255,1)` | `Navbar` header |
+| `--theme-navbar-shadow` | `0px 4px 25px rgba(2,30,53,0.45)` | `0px 4px 25px rgba(0,0,0,0.08)` | `Navbar` header |
 | `--theme-text` | `rgba(255,255,255,1)` | `rgba(33,33,33,1)` | All primary text |
 | `--theme-text-dim` | `rgba(220,220,220,1)` | `rgba(80,80,80,1)` | Secondary / body text |
-| `--theme-card-bg` | `rgba(255,255,255,0.15)` | `rgba(33,33,33,0.05)` | Glassmorphism cards |
-| `--theme-card-border` | `rgba(255,255,255,0.28)` | `rgba(33,33,33,0.18)` | Glassmorphism borders |
-| `--theme-model-btn-bg` | `rgba(255,255,255,0.05)` | `rgba(33,33,33,0.04)` | Model selector buttons |
-| `--theme-model-btn-border` | `rgba(255,255,255,0.10)` | `rgba(33,33,33,0.14)` | Model selector borders |
+| `--theme-card-bg` | `rgba(7,159,242,0.10)` | `rgba(7,159,242,0.05)` | Glassmorphism cards |
+| `--theme-card-border` | `rgba(7,159,242,0.30)` | `rgba(8,108,175,0.22)` | Glassmorphism borders |
+| `--theme-model-btn-bg` | `rgba(7,159,242,0.05)` | `rgba(7,159,242,0.035)` | Model selector buttons |
+| `--theme-model-btn-border` | `rgba(7,159,242,0.20)` | `rgba(8,108,175,0.18)` | Model selector borders |
 | `--theme-icon` | `rgba(255,255,255,0.6)` | `rgba(33,33,33,0.5)` | Empty-state icons/text |
 | `--theme-toggle-bg` | `rgba(255,255,255,0.08)` | `rgba(255,255,255,1)` | Toggle button fill |
 | `--theme-toggle-border` | `rgba(255,255,255,0.18)` | `rgba(33,33,33,0.15)` | Toggle button border |
@@ -292,15 +291,13 @@ All themed values are CSS custom properties in `globals.css`. Dark mode defaults
 
 `globals.css` applies `transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease` to structural block elements and `transition: color 0.35s ease` to text elements. All themed properties animate smoothly when the `light` class is toggled.
 
-### Logo Swapping
-
-CSS `filter: invert()` cannot selectively target parts of a PNG (e.g. keeping the branded "x" mark unchanged while inverting only the text). Instead, the `Navbar` uses conditional `src`:
+### Logo
 
 ```tsx
-src={theme === "light" ? "/images/xis-logo-light.png" : "/images/xis-logo.png"}
+src="/images/chip-detector-logo.svg"
 ```
 
-`xis-logo-light.png` must be placed in `public/images/` — it should be identical to `xis-logo.png` except the "is.ai" text is dark (`#212121`) while the "x" mark retains its original brand colour.
+The transparent SVG logo is used unchanged in both themes.
 
 ---
 
@@ -318,9 +315,9 @@ src={theme === "light" ? "/images/xis-logo-light.png" : "/images/xis-logo.png"}
 |---|---|---|---|
 | `--theme-bg` | `#212121 → #000` gradient | `#ffffff` | Page background |
 | `--theme-text` | `#ffffff` | `#212121` | Body text, labels |
-| `#57C8E7` | — | — | Cyan accent (selected model, example ring) |
-| `rgba(62,95,170,1)` | — | — | Label badge background (always blue) |
-| `btn-gradient` | `#57C8E7 → #3E5FAA` | same | Infer, Watch Demo, Community, Login buttons |
+| `#079FF2` | — | — | Logo bright blue (selected model, example ring) |
+| `#086CAF` | — | — | Logo deep blue and label badge background |
+| `btn-gradient` | `#079FF2 → #086CAF` | same | Infer, Watch Demo, Community, Login buttons |
 
 ### Glassmorphism Pattern
 
@@ -344,7 +341,7 @@ border-radius: 20px;
 | Border radius | 20px |
 | Padding | 20px 200px |
 | Alignment | `alignSelf: center` |
-| Background | `linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%)` |
+| Background | `linear-gradient(180deg, #079FF2 0%, #086CAF 100%)` |
 | Font | Poppins SemiBold 24px, `line-height: 100%` |
 | Text colour | `rgba(255,255,255,1)` (fixed — not theme-sensitive) |
 
@@ -357,14 +354,14 @@ border-radius: 20px;
 
 ### `btn-gradient` Class
 
-Defined in `globals.css`. Applies `linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%)` to the Infer button, Watch Demo button, Community nav link, and form submit buttons. The gradient is intentionally not theme-sensitive — it always renders blue.
+Defined in `globals.css`. Applies `linear-gradient(180deg, #079FF2 0%, #086CAF 100%)` to the Infer button, Watch Demo button, Community nav link, and form submit buttons. The gradient is intentionally not theme-sensitive — it always renders the logo's blues.
 
 ### Custom Tailwind Tokens (`tailwind.config.ts`)
 
 ```ts
 darkMode: "class",   // light class on <html> for light mode; absence = dark mode
 colors: {
-  brand: { cyan: "#4dd4f0", blue: "#3b82f6" },
+  brand: { cyan: "#079FF2", blue: "#086CAF" },
   surface: {
     DEFAULT: "#0d1117",
     card: "#1a2035",
@@ -453,8 +450,7 @@ All static assets live in `frontend/public/images/`.
 
 | File | Used In | Notes |
 |---|---|---|
-| `xis-logo.png` | Navbar (dark mode), Login page | White/light version for dark backgrounds |
-| `xis-logo-light.png` | Navbar (light mode) | Dark version — same "x" mark, dark "is.ai" text. **Must be added manually.** |
+| `chip-detector-logo.svg` | Navbar, login page, registration page | Transparent blue Chip Detector logo mark |
 | `login-illustration.png` | Login page left panel | Decorative 3D illustration |
 | `video-thumnail.png` | HowToUse | Demo video poster image |
 | `example-1.png` | ExampleImages | Clickable example input image |

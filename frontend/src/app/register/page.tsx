@@ -3,8 +3,8 @@ import Image from "next/image";
 import SignupForm from "@/components/signup/SignupForm";
 
 export const metadata: Metadata = {
-  title: "Register – xis.ai",
-  description: "Create your xis.ai account",
+  title: "Register – Chip Detector",
+  description: "Create your Chip Detector account",
 };
 
 export default function RegisterPage() {
@@ -15,7 +15,7 @@ export default function RegisterPage() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #212121 0%, #000000 100%)",
+        background: "linear-gradient(180deg, #0D2033 0%, #06111D 100%)",
       }}
     >
       {/* ── Left panel: branding + illustration ── */}
@@ -29,10 +29,10 @@ export default function RegisterPage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ width: "128px", height: "47px", position: "relative", flexShrink: 0 }}>
+        <div style={{ width: "64px", height: "52px", position: "relative", flexShrink: 0 }}>
           <Image
-            src="/images/xis-logo.png"
-            alt="xis.ai logo"
+            src="/images/chip-detector-logo.svg"
+            alt="Chip Detector logo"
             fill
             style={{ objectFit: "contain", objectPosition: "left center" }}
             priority

@@ -296,7 +296,7 @@ export default function SignupForm() {
           width: "100%",
           height: "50px",
           borderRadius: "10px",
-          background: "rgba(87, 200, 231, 1)",
+          background: "#079FF2",
           fontFamily: "Poppins",
           fontWeight: 600,
           fontSize: "16px",
@@ -315,7 +315,7 @@ export default function SignupForm() {
         Already have an account?{" "}
         <Link
           href="/login"
-          className="font-semibold text-white hover:text-[#57C8E7] transition-colors duration-150"
+          className="font-semibold text-white hover:text-[#079FF2] transition-colors duration-150"
         >
           Sign in
         </Link>

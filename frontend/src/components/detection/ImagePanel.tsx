@@ -56,7 +56,7 @@ export default function ImagePanel({
           borderRadius: "20px",
           padding: "10px",
           gap: "10px",
-          background: "rgba(62, 95, 170, 1)",
+          background: "#086CAF",
           fontFamily: "Inter",
           fontWeight: 600,
           fontSize: "14px",

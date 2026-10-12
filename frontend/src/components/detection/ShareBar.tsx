@@ -23,7 +23,7 @@ export default function ShareBar() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on Facebook"
-        className="text-gray-400 hover:text-[#4dd4f0] transition-colors duration-150"
+        className="text-gray-400 hover:text-[#079FF2] transition-colors duration-150"
       >
         <Facebook size={18} />
       </a>
@@ -32,7 +32,7 @@ export default function ShareBar() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on Twitter"
-        className="text-gray-400 hover:text-[#4dd4f0] transition-colors duration-150"
+        className="text-gray-400 hover:text-[#079FF2] transition-colors duration-150"
       >
         <Twitter size={18} />
       </a>
@@ -40,7 +40,7 @@ export default function ShareBar() {
         onClick={handleCopyLink}
         aria-label={copied ? "Link copied!" : "Copy link"}
         title={copied ? "Copied!" : "Copy link"}
-        className="text-gray-400 hover:text-[#4dd4f0] transition-colors duration-150"
+        className="text-gray-400 hover:text-[#079FF2] transition-colors duration-150"
       >
         <Link2 size={18} />
       </button>

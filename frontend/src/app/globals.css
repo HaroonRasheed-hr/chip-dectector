@@ -6,41 +6,41 @@
 
 /* ─── Theme CSS variables ─────────────────────────────── */
 :root {
-  --gradient-brand: linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%);
+  --gradient-brand: linear-gradient(180deg, #079FF2 0%, #086CAF 100%);
 
   /* Dark mode defaults */
-  --theme-bg: linear-gradient(180deg, #212121 0%, #000000 100%);
-  --theme-navbar-bg: rgba(0, 0, 0, 1);
-  --theme-navbar-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  --theme-bg: linear-gradient(180deg, #0D2033 0%, #06111D 100%);
+  --theme-navbar-bg: rgba(5, 18, 32, 1);
+  --theme-navbar-shadow: 0px 4px 25px 0px rgba(2, 30, 53, 0.45);
   --theme-text: rgba(255, 255, 255, 1);
   --theme-text-dim: rgba(220, 220, 220, 1);
-  --theme-card-bg: rgba(255, 255, 255, 0.15);
-  --theme-card-border: rgba(255, 255, 255, 0.28);
-  --theme-model-btn-bg: rgba(255, 255, 255, 0.05);
-  --theme-model-btn-border: rgba(255, 255, 255, 0.10);
+  --theme-card-bg: rgba(7, 159, 242, 0.10);
+  --theme-card-border: rgba(7, 159, 242, 0.30);
+  --theme-model-btn-bg: rgba(7, 159, 242, 0.05);
+  --theme-model-btn-border: rgba(7, 159, 242, 0.20);
   --theme-icon: rgba(255, 255, 255, 0.6);
-  --theme-scroll-track: #0d1117;
-  --theme-scroll-thumb: #2d3748;
-  --theme-scroll-thumb-hover: #4a5568;
+  --theme-scroll-track: #071522;
+  --theme-scroll-thumb: #086CAF;
+  --theme-scroll-thumb-hover: #079FF2;
   --theme-toggle-bg: rgba(255, 255, 255, 0.08);
   --theme-toggle-border: rgba(255, 255, 255, 0.18);
   --theme-toggle-color: rgba(255, 255, 255, 1);
 }
 
 html.light {
-  --theme-bg: rgba(255, 255, 255, 1);
+  --theme-bg: #F4FAFF;
   --theme-navbar-bg: rgba(255, 255, 255, 1);
   --theme-navbar-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
   --theme-text: rgba(33, 33, 33, 1);
   --theme-text-dim: rgba(80, 80, 80, 1);
-  --theme-card-bg: rgba(33, 33, 33, 0.05);
-  --theme-card-border: rgba(33, 33, 33, 0.18);
-  --theme-model-btn-bg: rgba(33, 33, 33, 0.04);
-  --theme-model-btn-border: rgba(33, 33, 33, 0.14);
+  --theme-card-bg: rgba(7, 159, 242, 0.05);
+  --theme-card-border: rgba(8, 108, 175, 0.22);
+  --theme-model-btn-bg: rgba(7, 159, 242, 0.035);
+  --theme-model-btn-border: rgba(8, 108, 175, 0.18);
   --theme-icon: rgba(33, 33, 33, 0.5);
-  --theme-scroll-track: #f0f0f0;
-  --theme-scroll-thumb: #c0c0c0;
-  --theme-scroll-thumb-hover: #999999;
+  --theme-scroll-track: #EAF5FE;
+  --theme-scroll-thumb: #80BEE8;
+  --theme-scroll-thumb-hover: #086CAF;
   --theme-toggle-bg: rgba(255, 255, 255, 1);
   --theme-toggle-border: rgba(33, 33, 33, 0.15);
   --theme-toggle-color: rgba(33, 33, 33, 1);
@@ -109,13 +109,13 @@ label {
 
 /* ─── Brand gradient utility ──────────────────────────── */
 .btn-gradient {
-  background: linear-gradient(180deg, #57C8E7 0%, #3E5FAA 100%);
+  background: var(--gradient-brand);
 }
 .btn-gradient:hover {
-  background: linear-gradient(180deg, #3db8d8 0%, #2f4b8c 100%);
+  background: linear-gradient(180deg, #078BD7 0%, #075894 100%);
 }
 
 /* ─── Example image selected ring ────────────────────── */
 .example-selected {
-  border: 2px solid #57C8E7;
+  border: 2px solid #079FF2;
 }

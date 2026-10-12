@@ -1,4 +1,4 @@
-# VisionPulse — Frontend/Backend Integration Documentation
+# Chip Detector — Frontend/Backend Integration Documentation
 
 This document explains exactly how the Next.js frontend is built and served
 by the Django backend so the entire application runs from a single port

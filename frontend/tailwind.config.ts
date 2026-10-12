@@ -11,8 +11,8 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          cyan: "#4dd4f0",
-          blue: "#3b82f6",
+          cyan: "#079FF2",
+          blue: "#086CAF",
         },
         surface: {
           DEFAULT: "#0d1117",

@@ -47,13 +47,13 @@ export default function ModelSelector({ selected, onChange }: ModelSelectorProps
               role="radio"
               aria-checked={isSelected}
               onClick={() => onChange(id)}
-              className="flex-1 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57C8E7]"
+              className="flex-1 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#079FF2]"
               style={{
                 height: "72px",
                 borderRadius: "14px",
-                border: isSelected ? "1px solid #57C8E7" : "1px solid var(--theme-model-btn-border)",
-                background: isSelected ? "rgba(87, 200, 231, 0.10)" : "var(--theme-model-btn-bg)",
-                color: isSelected ? "#57C8E7" : "var(--theme-text)",
+                border: isSelected ? "1px solid #079FF2" : "1px solid var(--theme-model-btn-border)",
+                background: isSelected ? "rgba(7, 159, 242, 0.10)" : "var(--theme-model-btn-bg)",
+                color: isSelected ? "#079FF2" : "var(--theme-text)",
                 fontFamily: "Poppins",
                 fontWeight: 500,
                 fontSize: "24px",
