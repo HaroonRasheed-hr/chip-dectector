@@ -520,7 +520,7 @@ mqtt_result_logger.log_error(
 
 ## 10. Running a Local Broker
 
-VisionPulse expects a Mosquitto broker on `localhost:1883`. The simplest
+Chip Detector expects a Mosquitto broker on `localhost:1883`. The simplest
 setups:
 
 ### Windows — Mosquitto installer
